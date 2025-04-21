@@ -1,2 +1,19 @@
-# todo-cli
-A simple command-line To-Do app built with Python. Add, complete, and delete tasks with local JSON storage. Perfect for minimalists who love the terminal.
+# 📝 todo-cli
+
+A simple and minimal command-line To-Do app built with Python.
+
+## 🚀 Features
+
+- Add tasks
+- Mark tasks as complete
+- Delete tasks
+- Persist data locally using `tasks.json`
+
+## 📦 Requirements
+
+- Python 3.x
+
+## 💻 Usage
+
+```bash
+python todo.py
