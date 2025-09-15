@@ -13,10 +13,15 @@ def save_tasks(tasks):
     with open(FILE, 'w') as f:
         json.dump(tasks, f, indent=2)
 
-def show_tasks(tasks):
+def show_tasks(tasks, search_result=False):
     if not tasks:
         print("✅ No tasks! You're all caught up.")
         return
+    
+    if not search_result:
+        print("All Tasks:")
+    print("ID | Title | Status")
+    print("-" * 40)
     for i, task in enumerate(tasks):
         status = '✔️' if task['done'] else '❌'
         print(f"{i+1}. {task['title']} [{status}]")
@@ -32,11 +37,21 @@ def delete_task(tasks, index):
     if 0 <= index < len(tasks):
         del tasks[index]
 
+def search_tasks(tasks, keyword):
+    results = [task for task in tasks if keyword.lower() in task['title'].lower()]
+    
+    if not results:
+        print(f"✅ No tasks matching '{keyword}'!")
+        return
+    
+    print(f"Search results for '{keyword}':")
+    show_tasks(results, search_result=True)
+
 def main():
     tasks = load_tasks()
 
     while True:
-        print("\n1. View\n2. Add\n3. Complete\n4. Delete\n5. Exit")
+        print("\n1. View\n2. Add\n3. Complete\n4. Delete\n5. Search\n6. Exit")
         choice = input("Choose: ")
 
         if choice == '1':
@@ -51,11 +66,14 @@ def main():
             idx = int(input("Task number to delete: ")) - 1
             delete_task(tasks, idx)
         elif choice == '5':
+            keyword = input("Search keyword: ")
+            search_tasks(tasks, keyword)
+        elif choice == '6':
             save_tasks(tasks)
             print("Goodbye!")
             break
         else:
-            print("Invalid choice.")
+            print("Invalid choice.")"}]}}}
 
 if __name__ == "__main__":
     main()
