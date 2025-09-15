@@ -13,11 +13,13 @@ def save_tasks(tasks):
     with open(FILE, 'w') as f:
         json.dump(tasks, f, indent=2)
 
-def show_tasks(tasks):
+def show_tasks(tasks, search_result=False):
     if not tasks:
         print("✅ No tasks! You're all caught up.")
         return
     
+    if not search_result:
+        print("All Tasks:")
     print("ID | Title | Status")
     print("-" * 40)
     for i, task in enumerate(tasks):
@@ -43,11 +45,7 @@ def search_tasks(tasks, keyword):
         return
     
     print(f"Search results for '{keyword}':")
-    print("ID | Title | Status")
-    print("-" * 40)
-    for i, task in enumerate(results):
-        status = '✔️' if task['done'] else '❌'
-        print(f"{i+1}. {task['title']} [{status}]")
+    show_tasks(results, search_result=True)
 
 def main():
     tasks = load_tasks()
@@ -75,7 +73,7 @@ def main():
             print("Goodbye!")
             break
         else:
-            print("Invalid choice.")
+            print("Invalid choice.")"}]}}}
 
 if __name__ == "__main__":
     main()
