@@ -36,7 +36,13 @@ def main():
     tasks = load_tasks()
 
     while True:
-        print("\n1. View\n2. Add\n3. Complete\n4. Delete\n5. Exit")
+        print(
+                "\n1. View"
+                "\n2. Add"
+                "\n3. Complete"
+                "\n4. Delete"
+                "\n5. Exit"
+                )
         choice = input("Choose: ")
 
         if choice == '1':
