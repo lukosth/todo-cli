@@ -15,10 +15,10 @@ def save_tasks(tasks):
 
 def show_tasks(tasks):
     if not tasks:
-        print("✅ No tasks! You're all caught up.")
+        print("[+] No tasks! You're all caught up.")
         return
     for i, task in enumerate(tasks):
-        status = '✔️' if task['done'] else '❌'
+        status = '[+]' if task['done'] else '[x]'
         print(f"{i+1}. {task['title']} [{status}]")
 
 def add_task(tasks, title):
