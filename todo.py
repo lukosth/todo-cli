@@ -24,6 +24,10 @@ def show_tasks(tasks):
 def add_task(tasks, title):
     tasks.append({"title": title, "done": False})
 
+def edit_task(tasks, index, new_title):
+    if 0 <= index < len(tasks):
+        tasks[index]['title'] = new_title
+
 def complete_task(tasks, index):
     if 0 <= index < len(tasks):
         tasks[index]['done'] = True
@@ -36,7 +40,7 @@ def main():
     tasks = load_tasks()
 
     while True:
-        print("\n1. View\n2. Add\n3. Complete\n4. Delete\n5. Exit")
+        print("\n1. View\n2. Add\n3. Edit\n4. Complete\n5. Delete\n6. Exit")
         choice = input("Choose: ")
 
         if choice == '1':
@@ -45,12 +49,15 @@ def main():
             title = input("Task: ")
             add_task(tasks, title)
         elif choice == '3':
+            title = int(input("Task number to edit: ")) - 1
+            edit_task(tasks, title, new_title=input("New title: "))
+        elif choice == '4':
             idx = int(input("Task number to complete: ")) - 1
             complete_task(tasks, idx)
-        elif choice == '4':
+        elif choice == '5':
             idx = int(input("Task number to delete: ")) - 1
             delete_task(tasks, idx)
-        elif choice == '5':
+        elif choice == '6':
             save_tasks(tasks)
             print("Goodbye!")
             break
