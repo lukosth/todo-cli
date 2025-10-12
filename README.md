@@ -1,4 +1,4 @@
-# 📝 todo-cli: Your Simple Command-Line To-Do App
+   # 📝 todo-cli: Your Simple Command-Line To-Do App
 
 ![todo-cli](https://img.shields.io/badge/todo--cli-v1.0.0-blue.svg) ![Python](https://img.shields.io/badge/Python-3.6%2B-yellow.svg) ![Open Source](https://img.shields.io/badge/Open%20Source-Yes-brightgreen.svg)
 
@@ -64,6 +64,11 @@ Here are the primary commands you can use with todo-cli:
 - **Complete a Task**:
   ```bash
   complete TASK_ID
+  ```
+  
+- **Edit a Task**:
+  ```bash
+  edit TASK_ID
   ```
 
 - **Delete a Task**:
