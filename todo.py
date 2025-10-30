@@ -32,11 +32,20 @@ def delete_task(tasks, index):
     if 0 <= index < len(tasks):
         del tasks[index]
 
+def edit_task(tasks, index, new_title):
+    """Edit the title of an existing task."""
+    if 0 <= index < len(tasks):
+        old_title = tasks[index]['title']
+        tasks[index]['title'] = new_title
+        print(f"Updated task '{old_title}' → '{new_title}'")
+    else:
+        print("Invalid task number.")
+
 def main():
     tasks = load_tasks()
 
     while True:
-        print("\n1. View\n2. Add\n3. Complete\n4. Delete\n5. Exit")
+        print("\n1. View\n2. Add\n3. Complete\n4. Delete\n5. Edit\n6. Exit")
         choice = input("Choose: ")
 
         if choice == '1':
@@ -51,6 +60,10 @@ def main():
             idx = int(input("Task number to delete: ")) - 1
             delete_task(tasks, idx)
         elif choice == '5':
+            idx = int(input("Task number to edit: ")) - 1
+            new_title = input("New task title: ")
+            edit_task(tasks, idx, new_title)
+        elif choice == '6':
             save_tasks(tasks)
             print("Goodbye!")
             break
